@@ -1,2 +1,16 @@
 ---
-# tasks file for blast
+# main tasks file for blast
+
+- name: install required packages
+  yum: name={{ item }} state=present
+  with_items:
+    - gcc
+    - gcc-c++
+
+- name: check if already installed
+  stat: path={{ blast_prefix }}/lib
+  register: blast_dir
+  changed_when: blast_dir.stat.exists == False
+
+- include: install.yml
+  when: blast_dir.stat.exists == False

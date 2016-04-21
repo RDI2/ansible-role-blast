@@ -1,0 +1,18 @@
+---
+# install tasks file for blast
+
+- name: create blast dorectory
+  file: path={{ blast_prefix }} state=directory owner=root group=root mode=0755
+
+- name: download blast
+  #get_url: url={{ blast_url }} dest=/tmp/{{ blast_tarball_name }}.tar.gz
+  shell: wget {{ blast_url }} -P /tmp
+
+- name: extract blast tarball
+  unarchive: copy=no src=/tmp/{{ blast_tarball_name }}.tar.gz dest=/tmp creates=/tmp/{{ blast_tarball_name }}
+
+- name: install blast
+  shell: ./configure --prefix={{ blast_prefix }} && make && make install
+  args:
+    chdir: /tmp/{{ blast_tarball_name }}/c++
+    creates: "{{ blast_prefix }}/lib"
