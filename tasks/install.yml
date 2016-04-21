@@ -12,7 +12,7 @@
   unarchive: copy=no src=/tmp/{{ blast_tarball_name }}.tar.gz dest=/tmp creates=/tmp/{{ blast_tarball_name }}
 
 - name: install blast
-  shell: ./configure --prefix={{ blast_prefix }} && make && make install
+  shell: ./configure --prefix={{ blast_prefix }} && make -j {{ blast_make_jobs }} && make install
   args:
     chdir: /tmp/{{ blast_tarball_name }}/c++
     creates: "{{ blast_prefix }}/lib"
