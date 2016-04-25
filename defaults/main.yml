@@ -2,9 +2,9 @@
 # defaults file for blast
 
 blast_version: 2.3.0
-blast_url: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-{{ blast_version }}+-src.tar.gz
+blast_url: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/{{ blast_version }}/ncbi-blast-{{ blast_version }}+-src.tar.gz
 blast_tarball_name: ncbi-blast-{{ blast_version }}+-src
 blast_prefix: /opt/blast/{{ blast_version }}
 
-# Number of jobs, `make -j 1` by default
-blast_make_jobs: 1
+# Number of make jobs, `make -j 2` by default
+blast_make_jobs: 2
