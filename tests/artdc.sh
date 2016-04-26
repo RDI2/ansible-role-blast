@@ -63,7 +63,7 @@ run_container () {
 
 provision () {
   run_container
-  ansible-playbook -i inventory test.yml -v
+  ansible-playbook -i inventory test.yml -vvv
 }
 
 login () {

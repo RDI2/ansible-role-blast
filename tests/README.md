@@ -1,34 +1,4 @@
-# Artdc: Ansible Role Tests with Docker Container
-[![Build Status](https://travis-ci.org/kjtanaka/art_dc.svg?branch=master)](https://travis-ci.org/kjtanaka/artdc)
-
-Artdc is a simple handy template of Ansible `<role>/tests` that lets you test a role with
-Docker container.
-
-## Supported container distros and versions
-
-| Distro | Versions          |
-|:-------|:------------------|
-|Ubuntu  |14.04, 15.10, 16.04|
-|Debian  |Wheezy, Jessie     |
-|Fedora  |22, 23             |
-|CentOS  |6, 7               |
-|OpenSUSE|13.2               |
-
-> **Note:** You may want to take a look at the Dockerfiles in `Dockerfile.d`.
-> Each of them pulls an image from the official repository of each distro and
-> enable ssh key authentication.
-
-## Installation
-
-Create a role with `ansible-galaxy` and replace the `tests` directory like this:
-
-```bash
-$ ansible-galaxy init new-playbook
-$ cd new-playbook
-$ rm -rf tests
-$ git clone https://github.com/kjtanaka/artdc.git tests
-$ cd tests
-```
+# Test with Artdc
 
 ## How to use
 
@@ -73,23 +43,3 @@ $ ./artdc.sh reprovision
 # Clean container and image
 $ ./artdc.sh clean
 ```
-
-Basically, when you update your role, you just need to execute `make provision`,
-and then when you want to test the role from scratch, execute `make reprovision`.
-After you finish everything, you can clean it by `make clean`.
-
-## Author
-Maintained by Koji Tanaka
-
-## License
-
-MIT license.
-
-## Acknowledgements
-
-The idea is inspired by these things:
-
-- [Vagrant](https://www.vagrantup.com/)
-- [Test Kitchen](http://kitchen.ci/)
-- [tutumcloud/tutum-centos](https://github.com/tutumcloud/tutum-centos.git)
-- [Dockerizing an SSH daemon service](https://docs.docker.com/engine/examples/running_ssh_service/)
